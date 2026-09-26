@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f1efe9">
+<meta name="description" content="Rishi Gogoi — student, builder, AI enthusiast and aspiring founder from Jorhat, Assam.">
+<title>Rishi Gogoi — Personal Portfolio</title>
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1efe9; --ink:#11110f; --muted:#686862; --line:#c9c7bf;
+  --soft:#e6e3db; --purple:#7259ff; --white:#fbfaf6;
+  --max:1280px;
+}
+[data-theme="dark"]{
+  --bg:#0b0b0c; --ink:#f3f1ea; --muted:#9a9992; --line:#30302f;
+  --soft:#171716; --purple:#9a86ff; --white:#111110;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,Arial,sans-serif;overflow-x:hidden;transition:background .45s ease,color .45s ease}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit}
+.wrap{width:min(calc(100% - 44px),var(--max));margin:auto}
+.mono{font-family:"DM Mono",monospace}
+.eyebrow{font:500 11px "DM Mono";letter-spacing:.08em;text-transform:uppercase}
+.muted{color:var(--muted)}
+
+.nav{
+  position:fixed;left:0;right:0;top:0;z-index:50;
+  pointer-events:none;
+  color:var(--ink);
+  transition:color .35s ease;
+}
+
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:700 19px "Space Grotesk";pointer-events:auto;letter-spacing:-.05em;color:var(--ink);transition:color .35s ease}
+.logo span{color:var(--purple)}
+.nav-links{display:flex;gap:22px;font:11px "DM Mono";text-transform:uppercase;pointer-events:auto}
+.nav-links a{padding:7px 0;border-bottom:1px solid transparent}
+.nav-links a:hover{border-color:var(--ink)}
+.menu{display:none}
+
+.hero{min-height:100vh;padding:120px 0 50px;display:flex;flex-direction:column;justify-content:space-between}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+.hero-intro{max-width:470px;margin-top:15px}
+.hero-intro p{font-size:16px;line-height:1.65;margin:12px 0 0}
+.hero-title{
+  font:700 clamp(82px,15vw,205px)/.78 "Space Grotesk";
+  letter-spacing:-.085em;margin:70px 0 25px;
+  white-space:nowrap;
+}
+.hero-title .line2{display:block;margin-left:11vw}
+.hero-title .dot{color:var(--purple)}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.scroll-note{font:11px "DM Mono";text-transform:uppercase}
+.hero-meta{display:flex;gap:30px;text-align:right}
+.hero-meta strong{display:block;font:600 15px "Space Grotesk"}
+.hero-meta span{font:10px "DM Mono";color:var(--muted)}
+
+.marquee{
+  overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:13px 0;background:var(--ink);color:var(--bg);
+}
+.marquee-track{display:flex;width:max-content;animation:marquee 24s linear infinite}
+.marquee span{font:12px "DM Mono";text-transform:uppercase;white-space:nowrap;padding-right:45px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+section{padding:135px 0;border-bottom:1px solid var(--line)}
+.section-label{display:grid;grid-template-columns:90px 1fr;gap:30px;margin-bottom:70px}
+.section-label h2{font:600 clamp(48px,8vw,105px)/.88 "Space Grotesk";letter-spacing:-.075em;margin:0;max-width:1000px}
+.section-label .num{padding-top:8px}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw}
+.about-lead{font:500 clamp(25px,3.2vw,43px)/1.08 "Space Grotesk";letter-spacing:-.04em}
+.about-copy{font-size:15px;line-height:1.8;color:#4d4d48;max-width:570px}
+.about-copy p{margin:0 0 22px}
+
+.work-list{border-top:1px solid var(--line)}
+.work-item{
+  display:grid;grid-template-columns:90px 1fr 110px;gap:30px;
+  align-items:center;border-bottom:1px solid var(--line);padding:35px 0;
+  transition:background .3s,padding .3s;
+}
+.work-item:hover{background:var(--soft);padding-left:18px;padding-right:18px}
+.work-no{font:11px "DM Mono";color:var(--muted)}
+.work-name{font:600 clamp(31px,5vw,67px)/.92 "Space Grotesk";letter-spacing:-.065em}
+.work-desc{font-size:12px;color:var(--muted);max-width:370px;margin-top:10px}
+.work-type{text-align:right;font:10px "DM Mono";color:var(--muted);text-transform:uppercase}
+.work-arrow{font:24px "Space Grotesk";display:inline-block;transition:transform .25s}
+.work-item:hover .work-arrow{transform:translate(4px,-4px)}
+
+.feature{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center}
+.feature-image{background:#d8d5cd;overflow:hidden}
+.feature-image img{width:100%;height:650px;object-fit:cover;object-position:center 36%;filter:saturate(.75)}
+.feature-info h3{font:600 clamp(48px,7vw,90px)/.88 "Space Grotesk";letter-spacing:-.075em;margin:15px 0 24px}
+.feature-info p{max-width:500px;color:#55554f;line-height:1.75}
+.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font:10px "DM Mono";margin:4px 3px 4px 0}
+.feature-link{display:inline-flex;margin-top:30px;border-bottom:1px solid var(--ink);padding-bottom:5px;font:11px "DM Mono";text-transform:uppercase}
+
+.education-grid{display:grid;grid-template-columns:1fr 1fr;gap:8vw}
+.edu-item{border-top:1px solid var(--line);padding:23px 0}
+.edu-year{font:10px "DM Mono";color:var(--muted)}
+.edu-item h3{font:600 29px "Space Grotesk";letter-spacing:-.04em;margin:9px 0}
+.edu-item p{font-size:13px;color:#5f5f59;line-height:1.7;margin:0}
+
+.identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.identity-card{background:var(--ink);color:var(--bg);padding:35px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+.identity-card.light{background:var(--soft);color:var(--ink)}
+.identity-card h3{font:600 clamp(35px,5vw,62px)/.92 "Space Grotesk";letter-spacing:-.06em;margin:15px 0}
+.identity-card p{max-width:480px;color:#aaa9a2;font-size:13px}
+.identity-card.light p{color:#5f5f59}
+.fav{font:600 20px "Space Grotesk";letter-spacing:-.03em}
+.fav small{display:block;font:10px "DM Mono";color:#aaa9a2;margin-bottom:7px;text-transform:uppercase}
+.light .fav small{color:#686862}
+
+.life-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.life-photo{overflow:hidden;background:#d8d5cd}
+.life-photo img{width:100%;height:700px;object-fit:cover;filter:saturate(.7)}
+.life-copy{background:var(--soft);padding:50px;display:flex;flex-direction:column;justify-content:space-between}
+.life-copy h3{font:600 clamp(44px,6vw,82px)/.9 "Space Grotesk";letter-spacing:-.07em;margin:15px 0}
+.interests{display:flex;flex-wrap:wrap;gap:7px}
+.interest{border:1px solid #bab8b0;border-radius:999px;padding:8px 11px;font:10px "DM Mono"}
+
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.skill{padding:25px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:125px}
+.skill strong{font:600 18px "Space Grotesk";display:block;margin-bottom:8px}
+.skill span{font-size:11px;color:var(--muted)}
+
+.contact{padding:150px 0 70px;text-align:center}
+.contact h2{font:600 clamp(65px,13vw,180px)/.78 "Space Grotesk";letter-spacing:-.09em;margin:35px 0}
+.contact h2 span{color:var(--purple)}
+.contact p{color:var(--muted);font-size:13px}
+.contact-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:30px}
+.contact-links a{font:11px "DM Mono";border-bottom:1px solid var(--ink);padding-bottom:4px}
+footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:20px 0 30px;font:10px "DM Mono";color:var(--muted)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+.cursor-dot{position:fixed;z-index:100;width:9px;height:9px;border-radius:50%;background:var(--purple);pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:multiply;display:none}
+
+
+.theme-toggle{
+  min-width:78px;height:34px;padding:0 12px;border:1px solid var(--line);border-radius:999px;
+  background:var(--bg);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+  gap:7px;cursor:pointer;pointer-events:auto;transition:transform .25s ease,background .3s ease,
+  border-color .3s ease,color .3s ease; font:500 10px "DM Mono";text-transform:uppercase;
+}
+.theme-toggle:hover{transform:translateY(-1px);border-color:var(--purple)}
+.theme-icon{display:block;font-size:13px;line-height:1}
+.theme-label{letter-spacing:.04em}
+[data-theme="dark"] .marquee{background:#f3f1ea;color:#0b0b0c}
+[data-theme="dark"] .work-item:hover{background:#171716}
+[data-theme="dark"] .identity-card{background:#f3f1ea;color:#0b0b0c}
+[data-theme="dark"] .identity-card p{color:#55554f}
+[data-theme="dark"] .identity-card.light{background:#171716;color:#f3f1ea}
+[data-theme="dark"] .identity-card.light p{color:#aaa9a2}
+[data-theme="dark"] .life-copy{background:#171716}
+[data-theme="dark"] .skill{background:#101010}
+[data-theme="dark"] .feature-image,.life-photo{background:#171716}
+.hero-title{position:relative}
+.hero-title:after{
+  content:"";position:absolute;width:18vw;height:18vw;max-width:240px;max-height:240px;
+  border:1px solid var(--line);border-radius:50%;right:2%;top:-45%;
+  opacity:.7;animation:orbFloat 8s ease-in-out infinite;pointer-events:none;
+}
+@keyframes orbFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(-18px,15px,0) rotate(12deg)}
+}
+.hero-title .dot{display:inline-block;animation:dotPulse 2.4s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}
+.marquee-track{animation:marquee 24s linear infinite}
+.work-item{position:relative;overflow:hidden}
+.work-item:before{
+  content:"";position:absolute;left:0;top:0;width:0;height:1px;background:var(--purple);
+  transition:width .5s ease;
+}
+.work-item:hover:before{width:100%}
+.feature-image{position:relative}.feature-image img,.life-photo img{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.feature-image:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.13),transparent 65%);
+  transform:translateX(-120%);transition:transform .9s ease;pointer-events:none;
+}
+.feature:hover .feature-image:after{transform:translateX(120%)}
+.reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
+
+@media(min-width:900px){body{cursor:none}.cursor-dot{display:block}}
+
+[data-theme="dark"] .nav,
+[data-theme="dark"] .nav .logo,
+[data-theme="dark"] .nav .nav-links a,
+[data-theme="dark"] .nav .menu{
+  color:#f3f1ea;
+}
+[data-theme="dark"] .nav .theme-toggle{
+  color:#f3f1ea;
+  background:#171716;
+  border-color:#4a4947;
+}
+[data-theme="dark"] .nav .theme-toggle:hover{
+  border-color:#9a86ff;
+  color:#ffffff;
+}
+
+.mobile-actions{display:none;align-items:center;gap:10px;pointer-events:auto}
+@media(max-width:850px){
+  .mobile-actions{display:flex}
+  .mobile-actions .theme-toggle{min-width:70px;height:32px;padding:0 10px}
+  .hero-title:after{width:140px;height:140px;right:3%;top:-18%;opacity:.55}
+  .hero-title{will-change:transform}
+  .feature-image,.life-photo,.work-item{will-change:transform}
+  .work-item:active{background:var(--soft);padding-left:12px;padding-right:12px}
+  .work-item:active:before{width:100%}
+  .feature:active .feature-image:after{transform:translateX(120%)}
+  .feature-image:after{transition:transform 1s ease}
+  .hero-title .dot{animation-duration:2.8s}
+}
+@media(min-width:521px) and (max-width:1100px){
+  .wrap{width:min(calc(100% - 56px),var(--max))}
+  .hero{padding-top:115px}
+  .hero-title{font-size:13.5vw;margin-top:90px}
+  .hero-title .line2{margin-left:7vw}
+  .about-grid,.feature,.education-grid,.life-grid{gap:5vw}
+  .feature-image img{height:570px}
+  .life-photo img{height:570px}
+  .skills-grid{grid-template-columns:repeat(3,1fr)}
+  .identity-card{min-height:260px}
+}
+@media(max-width:520px){
+  .mobile-actions{gap:8px}
+  .hero-title{font-size:20vw;margin-top:90px}
+  .hero-title:after{width:105px;height:105px;top:-10%;right:0}
+  .hero-title .line2{margin-left:0}
+  .hero-intro{max-width:100%}
+  .hero-intro p{font-size:14px}
+  .marquee-track{animation-duration:18s}
+  .section-label h2{font-size:16vw}
+  .work-name{font-size:11vw}
+  .work-item{padding:28px 0}
+  .feature-image img{height:460px}
+  .life-photo img{height:460px}
+  .contact{padding-top:110px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+@media(max-width:850px){
+  .nav-links{display:none}.menu{display:block;font:10px "DM Mono";pointer-events:auto}
+  .hero{min-height:92vh}.hero-top{display:block}.hero-intro{margin-top:40px}.hero-title{white-space:normal;font-size:19vw;margin:110px 0 50px}.hero-title .line2{margin-left:0}
+  .hero-bottom{align-items:flex-start}.hero-meta{display:none}
+  .section-label{grid-template-columns:55px 1fr}.about-grid,.feature,.education-grid,.identity-grid,.life-grid{grid-template-columns:1fr}
+  .feature-image img{height:520px}.life-photo img{height:520px}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .work-item{grid-template-columns:45px 1fr 35px;gap:12px}.work-type{display:none}
+  section{padding:100px 0}.section-label{margin-bottom:45px}
+}
+@media(max-width:520px){.hero-title:after{display:none}
+  .wrap{width:min(calc(100% - 28px),var(--max))}
+  .hero{padding-top:100px}.hero-title{font-size:21vw}
+  .hero-intro p{font-size:14px}.hero-bottom{display:block}
+  .scroll-note{margin-bottom:20px}.skills-grid{grid-template-columns:1fr}
+  .life-copy{padding:30px}.feature-info{padding-top:10px}
+  .contact h2{font-size:20vw}footer{display:block}footer span{display:block;margin:5px 0}
+}
+</style>
+</head>
+<body>
+<div class="cursor-dot" id="cursor"></div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">PROBAL<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#education">Education</a>
+      <a href="#life">Life</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon" id="themeIcon">☾</span>
+        <span class="theme-label" id="themeLabel">Dark</span>
+      </button>
+    </nav>
+    <div class="mobile-actions">
+      <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon" id="themeIconMobile">☾</span>
+        <span class="theme-label" id="themeLabelMobile">Dark</span>
+      </button>
+      <span class="menu">MENU</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" style="border:0">
+    <div class="hero-top reveal">
+      <div class="eyebrow">Personal portfolio · 2026</div>
+      <div class="hero-intro">
+        <div class="eyebrow">01 — Hello</div>
+        <p>I'm <strong>Probal Gogoi</strong>, a 17-year-old student, builder and aspiring founder from Jorhat, Assam. <strong>My nickname is Rishi.</strong> I'm interested in technology, AI, music and entrepreneurship.</p>
+      </div>
+    </div>
+
+    <div class="hero-title reveal">
+      <span>PROBAL</span><span class="line2">GOGOI<span class="dot">.</span></span>
+    </div>
+
+    <div class="hero-bottom reveal">
+      <div class="scroll-note">Scroll to explore ↓</div>
+      <div class="hero-meta">
+        <div><strong>Jorhat</strong><span>ASSAM, INDIA</span></div>
+        <div><strong>PCMB</strong><span>CLASS 11 SCIENCE</span></div>
+        <div><strong>17</strong><span>YEARS OLD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee"><div class="marquee-track">
+    <span>Technology · AI · Music · Entrepreneurship · Startups · Basketball · Gym · Working Out · Cars · Bikes · Guitar ·</span>
+    <span>Technology · AI · Music · Entrepreneurship · Startups · Basketball · Gym · Working Out · Cars · Bikes · Guitar ·</span>
+  </div></div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">02</div>
+        <h2>I'm interested in what comes next.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-lead reveal">I like turning curiosity into things I can actually build.</div>
+        <div class="about-copy reveal">
+          <p>I'm <strong>Probal Gogoi</strong>. <strong>My nickname is Rishi</strong>. I’m currently studying Class 11 Science with PCMB at Luit Valley Academy in Jorhat.</p>
+          <p>Technology and AI are at the centre of what I want to explore. My long-term goal is to study computer science and build a startup of my own.</p>
+          <p>Outside technology, I play intermediate-level guitar, enjoy basketball, ride bikes, follow cars and bikes, and make time for music and creative projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">03</div>
+        <h2>Selected work.</h2>
+      </div>
+
+      <div class="work-list">
+        <a class="work-item reveal" href="https://mymindray.vercel.app" target="_blank" rel="noopener">
+          <div class="work-no">01</div>
+          <div>
+            <div class="work-name">My Mind Ray</div>
+            <div class="work-desc">An AI-powered mental health companion website and one of my first serious AI product experiments.</div>
+          </div>
+          <div class="work-type">AI / WEB<br><span class="work-arrow">↗</span></div>
+        </a>
+
+        <div class="work-item reveal">
+          <div class="work-no">02</div>
+          <div>
+            <div class="work-name">Northeast Community</div>
+            <div class="work-desc">A Discord community for people from Northeast India, built and managed with two other people. The community has grown beyond 1.5K members.</div>
+          </div>
+          <div class="work-type">COMMUNITY<br><span class="work-arrow">↗</span></div>
+        </div>
+
+        <a class="work-item reveal" href="https://www.youtube.com/@fallacymadhigh" target="_blank" rel="noopener">
+          <div class="work-no">03</div>
+          <div>
+            <div class="work-name">Fallacy Mad High</div>
+            <div class="work-desc">My YouTube channel — a place for my experiments with content and creative work.</div>
+          </div>
+          <div class="work-type">YOUTUBE<br><span class="work-arrow">↗</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">04</div>
+        <h2>One project, up close.</h2>
+      </div>
+      <div class="feature">
+        <div class="feature-image reveal"><img src="assets/portrait-school.jpg" alt="Rishi at school"></div>
+        <div class="feature-info reveal">
+          <div class="eyebrow">Featured project · 2026</div>
+          <h3>My Mind Ray</h3>
+          <p>An AI-powered mental health companion I built as a project. It represents the kind of work I want to keep doing: taking an idea, learning the technology required, and turning it into something people can interact with.</p>
+          <div>
+            <span class="pill">AI</span><span class="pill">WEB</span><span class="pill">PRODUCT</span><span class="pill">EXPERIMENT</span>
+          </div>
+          <a class="feature-link" href="https://mymindray.vercel.app" target="_blank" rel="noopener">Open My Mind Ray ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">05</div>
+        <h2>Where I've studied.</h2>
+      </div>
+      <div class="education-grid">
+        <div>
+          <div class="edu-item reveal">
+            <div class="edu-year">KINDERGARTEN</div>
+            <h3>ETC School</h3>
+            <p>Rajabari, Jorhat. My kindergarten years and the beginning of my formal schooling.</p>
+          </div>
+          <div class="edu-item reveal">
+            <div class="edu-year">NURSERY → CLASS 10</div>
+            <h3>Don Bosco Higher Secondary School</h3>
+            <p>Baghchung, Jorhat. I studied here from Nursery through Class 10.</p>
+          </div>
+        </div>
+        <div>
+          <div class="edu-item reveal">
+            <div class="edu-year">CLASS 11 · PRESENT</div>
+            <h3>Luit Valley Academy</h3>
+            <p>T.R. Phukon Road, Jorhat. Currently studying Science with PCMB — Physics, Chemistry, Mathematics and Biology.</p>
+          </div>
+          <div class="edu-item reveal">
+            <div class="edu-year">NEXT</div>
+            <h3>Computer Science</h3>
+            <p>I want to continue into computer science and eventually use that foundation to build my own startup.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="life">
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">06</div>
+        <h2>Outside the screen.</h2>
+      </div>
+      <div class="life-grid">
+        <div class="life-photo reveal"><img src="assets/portrait-rooftop.jpg" alt="Rishi on a rooftop"></div>
+        <div class="life-copy reveal">
+          <div>
+            <div class="eyebrow">A few things I enjoy</div>
+            <h3>Music, motion & curiosity.</h3>
+            <p style="max-width:520px;color:var(--muted);font-size:14px;line-height:1.7">I also hit the gym regularly and genuinely enjoy working out — it is one of the routines I like keeping alongside studying, building and creating.</p>
+          </div>
+          <div class="interests">
+            <span class="interest">Guitar</span><span class="interest">Basketball</span><span class="interest">Gym</span><span class="interest">Working Out</span><span class="interest">Cars</span><span class="interest">Bikes</span><span class="interest">AI</span><span class="interest">Music</span><span class="interest">Startups</span><span class="interest">Technology</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">07</div>
+        <h2>Things I speak & things I make.</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill reveal"><strong>HTML</strong><span>Web development</span></div>
+        <div class="skill reveal"><strong>Python</strong><span>Programming foundation</span></div>
+        <div class="skill reveal"><strong>Guitar</strong><span>Intermediate level</span></div>
+        <div class="skill reveal"><strong>Assamese</strong><span>Mother tongue</span></div>
+        <div class="skill reveal"><strong>Hindi</strong><span>Language</span></div>
+        <div class="skill reveal"><strong>English</strong><span>Language</span></div>
+        <div class="skill reveal"><strong>Turkish</strong><span>Beginner level</span></div>
+        <div class="skill reveal"><strong>Punjabi</strong><span>Beginner level</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">08</div>
+        <h2>A few favourites.</h2>
+      </div>
+      <div class="identity-grid">
+        <div class="identity-card reveal">
+          <div class="eyebrow">Movie</div>
+          <h3>The Wolf of Wall Street</h3>
+          <p>A favourite movie — and a small window into the kind of stories and characters that stick with me.</p>
+        </div>
+        <div class="identity-card light reveal">
+          <div class="eyebrow">Song</div>
+          <h3>About You</h3>
+          <div class="fav"><small>by</small>The 1975</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-label reveal">
+        <div class="num eyebrow">09</div>
+        <h2>Still becoming.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-lead reveal">Right now, I'm a student. Eventually, I want to be a computer scientist and founder.</div>
+        <div class="about-copy reveal">
+          <p>I'm currently in Class 11 Science with PCMB. I'm learning programming, exploring AI, building projects and figuring out what kind of products I want to create.</p>
+          <p>I don't want this website to pretend that I've already made it. I want it to document the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact wrap" style="border-bottom:0">
+    <div class="eyebrow reveal">10 — Contact</div>
+    <h2 class="reveal">Let's <span>talk.</span></h2>
+    <p class="reveal">For projects, ideas, collaborations or just saying hello.</p>
+    <div class="contact-links reveal">
+      <a href="https://www.instagram.com/probal.95/" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="https://www.youtube.com/@fallacymadhigh" target="_blank" rel="noopener">YouTube ↗</a>
+      <a href="https://mymindray.vercel.app" target="_blank" rel="noopener">My Mind Ray ↗</a>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+<footer>
+  <span>© 2026 Rishi Gogoi</span>
+  <span>Jorhat, Assam · India</span>
+  <span class="mono">Built with curiosity.</span>
+</footer>
+</div>
+
+<script>
+const cursor=document.getElementById('cursor');
+window.addEventListener('pointermove',e=>{
+  cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px';
+});
+
+const themeButtons=[
+  {
+    button:document.getElementById('themeToggle'),
+    icon:document.getElementById('themeIcon'),
+    label:document.getElementById('themeLabel')
+  },
+  {
+    button:document.getElementById('themeToggleMobile'),
+    icon:document.getElementById('themeIconMobile'),
+    label:document.getElementById('themeLabelMobile')
+  }
+].filter(item=>item.button && item.icon);
+
+const savedTheme=localStorage.getItem('rishi-theme');
+const preferredDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+const initialTheme=savedTheme || (preferredDark ? 'dark' : 'light');
+
+function setTheme(theme){
+  document.documentElement.setAttribute('data-theme',theme);
+  localStorage.setItem('rishi-theme',theme);
+  themeButtons.forEach(({button,icon,label})=>{
+    const dark=theme==='dark';
+    icon.textContent=dark ? '☀' : '☾';
+    if(label) label.textContent=dark ? 'Light' : 'Dark';
+    button.setAttribute('aria-label',dark ? 'Switch to light mode' : 'Switch to dark mode');
+    button.setAttribute('title',dark ? 'Switch to light mode' : 'Switch to dark mode');
+  });
+}
+setTheme(initialTheme);
+themeButtons.forEach(({button})=>{
+  button.addEventListener('click',()=>{
+    const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+    setTheme(next);
+  });
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((entry,i)=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>entry.target.classList.add('show'),Math.min(i*45,250));
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const heroTitle=document.querySelector('.hero-title');
+let ticking=false;
+function updateHeroMotion(){
+  if(!heroTitle) return;
+  const width=window.innerWidth;
+  const maxShift=width<=520?14:width<=850?20:28;
+  const factor=width<=520?.045:width<=850?.06:.08;
+  const y=Math.min(window.scrollY*factor,maxShift);
+  heroTitle.style.transform=`translate3d(0,${y}px,0)`;
+  ticking=false;
+}
+window.addEventListener('scroll',()=>{
+  if(!ticking){
+    requestAnimationFrame(updateHeroMotion);
+    ticking=true;
+  }
+},{passive:true});
+updateHeroMotion();
+
+const interactiveImages=document.querySelectorAll('.feature-image,.life-photo');
+interactiveImages.forEach(card=>{
+  card.addEventListener('pointermove',e=>{
+    if(!e.isPrimary) return;
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    const img=card.querySelector('img');
+    if(img) img.style.transform=`scale(1.025) translate(${x*1.5}%,${y*1.5}%)`;
+  });
+  card.addEventListener('pointerleave',()=>{
+    const img=card.querySelector('img');
+    if(img) img.style.transform='';
+  });
+});
+</script>
+</body>
+</html>
